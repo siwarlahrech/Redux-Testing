@@ -1,5 +1,21 @@
-import { createStore } from 'redux'
-import toggleName from './Reducers/NameReducer'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 
-export default createStore(toggleName)
+import   counterReducer from './Reducers/counterReducer' 
 
+import { watchIncreaseCounter } from './Sagas/counterSaga'
+ 
+// import toggleName from './Reducers/NameReducer'
+
+const sagaMiddleware = createSagaMiddleware()
+
+const store = createStore(
+    counterReducer,
+    applyMiddleware(
+        sagaMiddleware,
+    )
+)
+
+sagaMiddleware.run(watchIncreaseCounter)
+
+export { store }

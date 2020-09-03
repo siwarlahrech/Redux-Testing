@@ -21,8 +21,8 @@ export default function DrawerNavigation() {
   return (
     <NavigationContainer>
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-        <Drawer.Screen name="Home" component={HomeStackNavigation} />
         <Drawer.Screen name="Settings" component={SettingsStackNavigation} />
+        <Drawer.Screen name="Home" component={HomeStackNavigation} />
         <Drawer.Screen name="Help" component={Help} />
       </Drawer.Navigator>
     </NavigationContainer>
